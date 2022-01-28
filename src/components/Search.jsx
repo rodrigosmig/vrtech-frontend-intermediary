@@ -1,8 +1,14 @@
+import { useState } from "react";
 import styled from "styled-components"
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
+
+  @media (max-width: 800px) {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
 const Input = styled.input`
@@ -23,13 +29,25 @@ const Button = styled.button`
   font-weight: 700;
   color: var(--yellow);
   cursor: pointer;
+
+  @media (max-width: 800px) {
+    width: 60%;
+    font-size: 14px;
+  }
 `;
 
-export function Search() {
+export function Search({ onClick }) {
+  const [value, setValue] = useState("");
+
   return (
     <Container>
-      <Input type="text" placeholder="Digite o nome do Pokémon" />
-      <Button>Buscar</Button>
+      <Input 
+        value={value}
+        type="text" 
+        placeholder="Digite o nome do Pokémon" 
+        onChange={e => setValue(e.target.value)}
+      />
+      <Button onClick={e => onClick(value)}>Buscar</Button>
     </Container>
   )
 }

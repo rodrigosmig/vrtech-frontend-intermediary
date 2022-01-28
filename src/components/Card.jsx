@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { capitalizeFirstLetter, getPokemonColor } from "../helpers/helpers";
 
 
 const Container = styled.div`
   width: 181px;
   height: 253px;
-  background-color: var(--green);
+  background-color: ${props => props.color};
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -15,6 +17,10 @@ const Container = styled.div`
   &:nth-child(4n) {
     margin-right: 0;
   }
+
+  @media (max-width: 800px) {
+    margin-right: 0;
+  }
 `;
 
 const Title = styled.h2`
@@ -22,7 +28,6 @@ const Title = styled.h2`
   font-weight: 500;
   font-size: 18px;
   color: var(--white);
-  font-weight: 400;
 `;
 
 const Subtitle = styled.h3`
@@ -41,13 +46,16 @@ const Image = styled.img`
   padding: 10px 15px;
 `;
 
-
-export function Card() {
+export function Card({ pokemon }) {
   return (
-    <Container>
-      <Title>Bulbasaur</Title>
-      <Subtitle>#0001</Subtitle>
-      <Image src="images/bulbasaur.png" alt="Bulbasaur" />
+    <Container color={getPokemonColor(pokemon.types[0])}>
+      <Title>
+        <Link to={`/details/${pokemon.name}`}>
+          { capitalizeFirstLetter(pokemon.name) }
+        </Link>
+      </Title>
+      <Subtitle>#{ pokemon.id }</Subtitle>
+      <Image src={ pokemon.image } alt={ pokemon.name } />
     </Container>
   )
 }

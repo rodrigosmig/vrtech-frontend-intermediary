@@ -14,7 +14,7 @@ export default function Router() {
           <Home />
         </Route>
 
-        <Route path="/details">
+        <Route exact path="/details/:name">
           <Details />
         </Route>
       </Switch>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 10%;
-  margin: 30px auto 0;
+  margin: 30px auto 20px;
 `;
 
 export function Loading() {

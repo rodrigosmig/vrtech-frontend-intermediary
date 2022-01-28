@@ -16,7 +16,7 @@ const HeaderComponent = styled.header`
 export function Header() {
   return (
       <HeaderComponent>
-        <img src="images/logo.svg" alt="Logo" />
+        <img src="/images/logo.svg" alt="Logo" />
       </HeaderComponent>
 
   )

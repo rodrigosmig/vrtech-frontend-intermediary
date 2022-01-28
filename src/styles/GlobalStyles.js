@@ -5,15 +5,19 @@ export const GlobalStyle = createGlobalStyle`
     --background: #C6ECED;
     --yellow: #FFCB05;
     --green: #48D0B0;
+    --gray: #C4C4C4;
     --dark-blue: #3763AD;
+    --blue: #027FC5;
     --black: #000000;
     --white: #FFFFFF;
-    --text-title: #363F5F;
-    --text-body: #969CB3;
   }
 
   body, input, textarea, button {
     font-family: "Roboto";
-    font-weight: 400;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `

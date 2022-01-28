@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { api } from "../services/api";
 import { Card } from "./Card";
 import { Loading } from "./Loading";
 
@@ -16,26 +14,28 @@ const Content = styled.div`
   flex-wrap: wrap;
   align-items: center;
   margin: 42px auto 0;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+  
 `;
 
-export function CardList() {
-  const [pokemons, setPokemons] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await api.get('pokemons');    
-      setPokemons(response.data)
-    }    
-
-    fetchData()
-  }, [])
-
+export function CardList({ pokemons, isLoading }) {
   return (
     <Section>
       <Content>
-        {pokemons?.map(pokemon => (
-          <Card key={pokemon.id} />
-        ))}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          pokemons?.map(pokemon => (
+            <Card 
+              key={pokemon.id} 
+              pokemon={pokemon}
+            />
+          ))
+
+        )}
       </Content>
     </Section>
   )
