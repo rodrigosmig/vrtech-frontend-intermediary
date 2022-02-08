@@ -19,6 +19,7 @@ const Error = styled.h4`
 
 export function Home() {
   const [pokemons, setPokemons] = useState();
+  const [filteredPokemons, setFilteredPokemons] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -29,6 +30,7 @@ export function Home() {
       try {
         const response = await api.post('pokemons');        
         setPokemons(response.data)
+        setFilteredPokemons(response.data)
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -38,9 +40,15 @@ export function Home() {
     fetchData()
   }, []);
 
-  const handleSearch = (name) => {
+  const handleSearch = (event, name) => {
+    event.preventDefault();
+
     if (isError) {
       setIsError(false);
+    }
+    
+    if (!name) {
+      return setFilteredPokemons(pokemons)
     }
 
     const filteredPokemons = pokemons.filter(pokemon => {
@@ -52,18 +60,21 @@ export function Home() {
       return;
     }
 
-    setPokemons(filteredPokemons);
+    setFilteredPokemons(filteredPokemons);
   }
 
   return (    
     <Container>
       <Header />      
-      <Search onClick={handleSearch} />
+      <Search 
+        onSearch={handleSearch}
+        isDisabled={isLoading}
+      />
 
       { isError && <Error>Nenhum Pokemon Encontrado</Error> }
 
       <CardList 
-        pokemons={pokemons} 
+        pokemons={filteredPokemons} 
         isLoading={isLoading}
       />
     </Container>

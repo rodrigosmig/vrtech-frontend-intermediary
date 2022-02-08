@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components"
 
-const Container = styled.div`
+const Form = styled.form`
   display: flex;
   justify-content: center;
 
@@ -36,18 +36,21 @@ const Button = styled.button`
   }
 `;
 
-export function Search({ onClick }) {
+export function Search({ onSearch, isLoading }) {
   const [value, setValue] = useState("");
 
   return (
-    <Container>
+    <Form onSubmit={event => onSearch(event, value)}>
       <Input 
         value={value}
         type="text" 
         placeholder="Digite o nome do Pokémon" 
         onChange={e => setValue(e.target.value)}
       />
-      <Button onClick={e => onClick(value)}>Buscar</Button>
-    </Container>
+      <Button 
+        type="submit"
+        disabled={isLoading}
+      >Buscar</Button>
+    </Form>
   )
 }
