@@ -6,16 +6,20 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  margin-top: 22px;
 `;
 
-const Content1 = styled.div`
-  width: 26%;
-  margin-left: 34px;
-  padding-top: 20px;
+const ContentArrow = styled.div`
+  padding: 20px;
 `;
 
-const Content2 = styled.div`
-  text-align: center;
+const ContentTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin-right: 52px;
 `;
 
 const ArrowBack = styled.span`
@@ -25,7 +29,6 @@ const ArrowBack = styled.span`
 `;
 
 const Title = styled.h2`
-  margin-top: 22px;
   font-weight: 500;
   font-size: 24px;
   color: var(--white);
@@ -42,20 +45,20 @@ const Subtitle = styled.h3`
 export function Header({ id, name }) {
   return (
     <Container>
-      <Content1>
+      <ContentArrow>
         <ArrowBack>
           <Link to={'/home'}>
             {"<"}
           </Link>
         </ArrowBack>
-      </Content1>
+      </ContentArrow>
 
-      <Content2>
+      <ContentTitle>
         <Title>
           { capitalizeFirstLetter(name) }
         </Title>
         <Subtitle>#{ id }</Subtitle>
-      </Content2>
+      </ContentTitle>
     </Container>
   )
 }
