@@ -8,14 +8,18 @@ const Container = styled.div`
   height: 253px;
   background-color: ${props => props.color};
   border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  
   margin-right: 51px;
   margin-bottom: 15px;
 
   &:nth-child(4n) {
     margin-right: 0;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   @media (max-width: 800px) {
@@ -49,14 +53,14 @@ const Image = styled.img`
 
 export function Card({ pokemon }) {
   return (
-    <Container color={getPokemonColor(pokemon.types[0])}>
-      <Title>
+      <Container color={getPokemonColor(pokemon.types[0])}>
         <Link to={`/details/${pokemon.name}`}>
-          { pokemon.name }
+          <Title>          
+            { pokemon.name }        
+          </Title>
+          <Subtitle>#{ String(pokemon.id).padStart(3, '0') }</Subtitle>
+          <Image src={ pokemon.image } alt={ pokemon.name } />
         </Link>
-      </Title>
-      <Subtitle>#{ pokemon.id }</Subtitle>
-      <Image src={ pokemon.image } alt={ pokemon.name } />
-    </Container>
+      </Container>
   )
 }

@@ -57,7 +57,7 @@ export function Header({ id, name }) {
         <Title>
           { name }
         </Title>
-        <Subtitle>#{ id }</Subtitle>
+        <Subtitle>#{ String(id).padStart(3, '0') }</Subtitle>
       </ContentTitle>
     </Container>
   )
