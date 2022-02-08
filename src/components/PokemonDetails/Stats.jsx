@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { capitalizeFirstLetter } from "../../helpers/helpers";
 
 const Container = styled.div`
   width: 62%;
@@ -44,6 +43,7 @@ const Li = styled.li`
 
 const Skill = styled.div`
   width: 28%;
+  text-transform: capitalize;
 
   @media (max-width: 800px) {
     font-size: 15px;
@@ -86,7 +86,7 @@ export function Stats({stats}) {
       <Ul>
         { stats.map(stat => (
           <Li key={ stat.name }>
-            <Skill>{capitalizeFirstLetter(stat.name)}</Skill>
+            <Skill>{stat.name}</Skill>
             <Value>{ stat.value }</Value>
             <Bar>
               <Fill width={getPercentValue(stat.value)}></Fill>

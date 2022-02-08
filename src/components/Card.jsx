@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { capitalizeFirstLetter, getPokemonColor } from "../helpers/helpers";
+import { getPokemonColor } from "../helpers/helpers";
 
 
 const Container = styled.div`
@@ -28,6 +28,7 @@ const Title = styled.h2`
   font-weight: 500;
   font-size: 18px;
   color: var(--white);
+  text-transform: capitalize;
 `;
 
 const Subtitle = styled.h3`
@@ -51,7 +52,7 @@ export function Card({ pokemon }) {
     <Container color={getPokemonColor(pokemon.types[0])}>
       <Title>
         <Link to={`/details/${pokemon.name}`}>
-          { capitalizeFirstLetter(pokemon.name) }
+          { pokemon.name }
         </Link>
       </Title>
       <Subtitle>#{ pokemon.id }</Subtitle>

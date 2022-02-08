@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { capitalizeFirstLetter } from "../../helpers/helpers";
 
 const Container = styled.div`
   width: 100%;
@@ -33,6 +32,7 @@ const Title = styled.h2`
   font-size: 24px;
   color: var(--white);
   line-height: 28px;
+  text-transform: capitalize;
 `;
 
 const Subtitle = styled.h3`
@@ -55,7 +55,7 @@ export function Header({ id, name }) {
 
       <ContentTitle>
         <Title>
-          { capitalizeFirstLetter(name) }
+          { name }
         </Title>
         <Subtitle>#{ id }</Subtitle>
       </ContentTitle>

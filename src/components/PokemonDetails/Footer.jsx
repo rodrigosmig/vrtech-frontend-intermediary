@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { capitalizeFirstLetter } from "../../helpers/helpers";
 
 const DataFooter = styled.div`
 margin-top: 24px;
@@ -23,6 +22,7 @@ const Text = styled.p`
   font-weight: 500;
   font-size: ${props => props.size};
   text-align: center;
+  text-transform: capitalize;
 `;
 
 const Unit = styled.span`
@@ -43,7 +43,7 @@ export function Footer({ height, type, weight }) {
       </Weight>
 
       <Type>
-        <Text size="14px">{capitalizeFirstLetter(type)}</Text>
+        <Text size="14px">{type}</Text>
         <Text size="10px">Type</Text>
       </Type>
 
