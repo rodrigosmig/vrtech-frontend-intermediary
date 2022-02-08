@@ -9,7 +9,6 @@ const Container = styled.div`
   max-width: 1080px;
   height: 100%;
   margin: 0 auto;
-  background-color: var(--background);
 `;
 
 const Error = styled.h4`

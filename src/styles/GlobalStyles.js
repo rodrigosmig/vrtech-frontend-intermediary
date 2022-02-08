@@ -12,6 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     --white: #FFFFFF;
   }
 
+  body {
+    background-color: var(--background);
+  }
+
   body, input, textarea, button {
     font-family: "Roboto";
   }

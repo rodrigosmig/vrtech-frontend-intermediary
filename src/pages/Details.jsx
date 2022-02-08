@@ -10,10 +10,7 @@ import { api } from "../services/api";
 const Container = styled.div`
   max-width: 1080px;
   height: 100vh;
-  margin: 0 auto;
-  background-color: var(--background);
-
-  
+  margin: 0 auto;  
 `;
 
 const Section = styled.section`
