@@ -50,7 +50,7 @@ export function Details() {
     }    
 
     fetchData()
-  }, []);
+  }, [name]);
 
   const hasPokemon = () => {
     return pokemon !== undefined
