@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/vrtech-frontend-intermediary/static/js/main.a846bba2.js",
+    "main.js": "/vrtech-frontend-intermediary/static/js/main.5ed2728c.js",
     "index.html": "/vrtech-frontend-intermediary/index.html",
-    "main.a846bba2.js.map": "/vrtech-frontend-intermediary/static/js/main.a846bba2.js.map"
+    "main.5ed2728c.js.map": "/vrtech-frontend-intermediary/static/js/main.5ed2728c.js.map"
   },
   "entrypoints": [
-    "static/js/main.a846bba2.js"
+    "static/js/main.5ed2728c.js"
   ]
 }
