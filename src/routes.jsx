@@ -4,7 +4,7 @@ import { Home } from './pages/Home';
 
 export default function Router() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/">
           <Redirect to="/home" />
