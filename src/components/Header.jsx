@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import logo from "../assets/images/logo.png"
 
 const HeaderComponent = styled.header`
   width: 100%;
@@ -16,7 +17,7 @@ const HeaderComponent = styled.header`
 export function Header() {
   return (
       <HeaderComponent>
-        <img src="/images/logo.svg" alt="Logo" />
+        <img src={logo} alt="Logo" />
       </HeaderComponent>
 
   )
