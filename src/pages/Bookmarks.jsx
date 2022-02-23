@@ -13,7 +13,7 @@ const H1 = styled.h1`
   font-size: 25px;
   font-weight: bold;
   line-height: 29px;
-  color: var(--purple)
+  color: var(--purple);
 `;
 
 export function Bookmarks() {

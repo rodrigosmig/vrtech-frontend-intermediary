@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getPokemonColor } from "../helpers/helpers";
-
+import { getPokemonColor } from "../../helpers/helpers";
+import { CardHeader } from "./CardHeader";
 
 const Container = styled.div`
   width: 181px;
@@ -27,21 +27,6 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.h2`
-  margin-top: 22px;
-  font-weight: 500;
-  font-size: 18px;
-  color: var(--white);
-  text-transform: capitalize;
-`;
-
-const Subtitle = styled.h3`
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--black);
-  margin-top: 3px;
-`;
-
 const Image = styled.img`
   width: 122px;
   height: 122px;
@@ -53,14 +38,15 @@ const Image = styled.img`
 
 export function Card({ pokemon }) {
   return (
-      <Container color={getPokemonColor(pokemon.types[0])}>
-        <Link to={`/details/${pokemon.name}`}>
-          <Title>          
-            { pokemon.name }        
-          </Title>
-          <Subtitle>#{ String(pokemon.id).padStart(3, '0') }</Subtitle>
-          <Image src={ pokemon.image } alt={ pokemon.name } />
-        </Link>
-      </Container>
+    <Container color={getPokemonColor(pokemon.types[0])}>
+      <Link to={`/details/${pokemon.name}`}>
+        <CardHeader 
+          title={pokemon.name} 
+          subtitle={String(pokemon.id)} 
+        />
+
+        <Image src={ pokemon.image } alt={ pokemon.name } />
+      </Link>
+    </Container>
   )
 }
