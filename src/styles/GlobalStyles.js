@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     --blue: #027FC5;
     --black: #000000;
     --white: #FFFFFF;
+    --purple: #3763AD
   }
 
   body {
