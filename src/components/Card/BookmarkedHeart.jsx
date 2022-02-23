@@ -3,17 +3,21 @@ import inactive_heart from '../../assets/images/empty_heart.png'
 import styled from 'styled-components';
 
 const Img = styled.img`
+  cursor: pointer;
+`;
+
+const Button = styled.button`
   
 `;
 
-export function BookmarkedHeart({ isActive }) {
+export function BookmarkedHeart({ isActive, onClick }) {
   return (
     <>
       { isActive 
         ? (
-          <Img src={active_heart} />
+          <Img src={active_heart} onClick={onClick} />
       ) : (
-        <Img src={inactive_heart} />
+        <Img src={inactive_heart} onClick={onClick} />
       ) }
     
     </>

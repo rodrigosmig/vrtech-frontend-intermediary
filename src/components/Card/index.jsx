@@ -39,12 +39,11 @@ const Image = styled.img`
 export function Card({ pokemon }) {
   return (
     <Container color={getPokemonColor(pokemon.types[0])}>
-      <Link to={`/details/${pokemon.name}`}>
         <CardHeader 
-          title={pokemon.name} 
-          subtitle={String(pokemon.id)} 
+          pokemon={pokemon} 
         />
 
+      <Link to={`/details/${pokemon.name}`}>
         <Image src={ pokemon.image } alt={ pokemon.name } />
       </Link>
     </Container>

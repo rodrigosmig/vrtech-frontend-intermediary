@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useBookmarkedPokemons } from "../../contexts/Bookmarks";
 import { BookmarkedHeart } from "./BookmarkedHeart";
 
 const Container = styled.div`
@@ -40,19 +42,25 @@ const Subtitle = styled.h3`
   margin-top: 3px;
 `;
 
-export function CardHeader({ title, subtitle }) {
+export function CardHeader({ pokemon }) {
+  const { addPokemon } = useBookmarkedPokemons();
   return (
     <Container>
       <ContentTitle>
-        <Title>
-          { title }
-        </Title>
-        <Subtitle>#{ subtitle.padStart(3, '0')}</Subtitle>
+        <Link to={`/details/${pokemon.name}`}>
+          <Title>
+            { pokemon.name }
+          </Title>
+          <Subtitle>#{ String(pokemon.id).padStart(3, '0')}</Subtitle>
+        </Link>
       </ContentTitle>
 
       <Bookmarks>
         <ContentBookmark>
-            <BookmarkedHeart isActive={false} />
+            <BookmarkedHeart 
+              isActive={pokemon.is_bookmarked} 
+              onClick={() => addPokemon(pokemon)}
+            />
         </ContentBookmark>
       </Bookmarks>
     </Container>

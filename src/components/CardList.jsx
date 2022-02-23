@@ -34,7 +34,6 @@ export function CardList({ pokemons, isLoading }) {
               pokemon={pokemon}
             />
           ))
-
         )}
       </Content>
     </Section>

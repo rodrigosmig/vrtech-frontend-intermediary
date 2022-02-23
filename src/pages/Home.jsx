@@ -28,9 +28,12 @@ export function Home() {
       setIsLoading(true);
 
       try {
-        const response = await api.post('pokemons');        
-        setPokemons(response.data)
-        setFilteredPokemons(response.data)
+        const response = await api.post('pokemons');
+        const new_pokemons = setBookmarkedPokemons(response.data);
+        console.log(new_pokemons);
+
+        setPokemons(new_pokemons)
+        setFilteredPokemons(new_pokemons)
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -39,6 +42,15 @@ export function Home() {
 
     fetchData()
   }, []);
+
+  const setBookmarkedPokemons = (new_pokemons) => {
+    return new_pokemons.map(pokemon => {
+      return {
+        ...pokemon,
+        is_bookmarked: [1, 3, 6, 10].includes(pokemon.id) ? true : false
+      }
+    })
+  }
 
   const handleSearch = (event, name) => {
     event.preventDefault();
