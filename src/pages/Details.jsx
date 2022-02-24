@@ -16,7 +16,7 @@ const Container = styled.div`
 const Section = styled.section`
   max-width: 877px;
   height: 436px;
-  margin: 63px auto 0;
+  margin: 40px auto 30px;
   background-color: ${props => props.color};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 25px;

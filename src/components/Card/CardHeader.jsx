@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useBookmarkedPokemons } from "../../contexts/Bookmarks";
 import { BookmarkedHeart } from "./BookmarkedHeart";
 
 const Container = styled.div`
@@ -43,7 +42,6 @@ const Subtitle = styled.h3`
 `;
 
 export function CardHeader({ pokemon }) {
-  const { addPokemon } = useBookmarkedPokemons();
   return (
     <Container>
       <ContentTitle>
@@ -59,7 +57,7 @@ export function CardHeader({ pokemon }) {
         <ContentBookmark>
             <BookmarkedHeart 
               isActive={pokemon.is_bookmarked} 
-              onClick={() => addPokemon(pokemon)}
+              //onClick={() => addPokemon(pokemon)}
             />
         </ContentBookmark>
       </Bookmarks>

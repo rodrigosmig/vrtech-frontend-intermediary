@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { usePokemons } from "../hooks/usePokemons";
 import { Card } from "./Card";
 import { Loading } from "./Loading";
 
@@ -21,14 +22,16 @@ const Content = styled.div`
   
 `;
 
-export function CardList({ pokemons, isLoading }) {
+export function CardList() {
+  const { isLoading, filteredPokemons } = usePokemons();
+
   return (
     <Section>
       <Content>
         {isLoading ? (
           <Loading />
         ) : (
-          pokemons?.map(pokemon => (
+          filteredPokemons?.map(pokemon => (
             <Card 
               key={pokemon.id} 
               pokemon={pokemon}

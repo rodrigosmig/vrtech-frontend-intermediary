@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components"
+import { usePokemons } from "../hooks/usePokemons";
 
 const Form = styled.form`
   display: flex;
@@ -36,21 +37,24 @@ const Button = styled.button`
   }
 `;
 
-export function Search({ onSearch, isLoading }) {
-  const [value, setValue] = useState("");
+export function Search() {
+  const { isLoading, searchPokemon } = usePokemons();
+  const [pokemonName, setPokemonName] = useState("");
 
   return (
-    <Form onSubmit={event => onSearch(event, value)}>
+    <Form onSubmit={event => searchPokemon(event, pokemonName)}>
       <Input 
-        value={value}
+        value={pokemonName}
         type="text" 
         placeholder="Digite o nome do Pokémon" 
-        onChange={e => setValue(e.target.value)}
+        onChange={e => setPokemonName(e.target.value)}
       />
       <Button 
         type="submit"
         disabled={isLoading}
-      >Buscar</Button>
+      >
+        Buscar
+      </Button>
     </Form>
   )
 }

@@ -6,10 +6,6 @@ const Img = styled.img`
   cursor: pointer;
 `;
 
-const Button = styled.button`
-  
-`;
-
 export function BookmarkedHeart({ isActive, onClick }) {
   return (
     <>
