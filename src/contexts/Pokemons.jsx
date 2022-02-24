@@ -12,31 +12,30 @@ export const PokemonProvider = ({ children }) => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    const updatedPokemons = pokemons.map(pokemon => {
-      return {
-        ...pokemon,
-        is_bookmarked: isBookmarked(pokemon)
-      }
-    })
-
-    setPokemons(updatedPokemons);
-    setFilteredPokemons(updatedPokemons);
-
-  }, [bookmarkedPokemons])
-
-  useEffect(() => {
     setIsLoading(true);
 
     const fetchData = async () => {
       try {
         const response = await api.post('pokemons');
-        const new_pokemons = response.data;
+        const bookmarkedPokemons = JSON.parse(localStorage.getItem('pokedex') || "[]");
+        
+        let new_pokemons = response.data;
+
+        bookmarkedPokemons.forEach(markedPokemon => {
+          new_pokemons = new_pokemons.map(pokemon => {
+            return {
+              ...pokemon,
+              is_bookmarked: markedPokemon.id === pokemon.id ? true : false
+            }
+          })
+        });
+
+        setBookmarkedPokemons(bookmarkedPokemons);
+        
         setPokemons(new_pokemons);
         setFilteredPokemons(new_pokemons);
         setIsLoading(false);
 
-        const bookmarkedPokemons = JSON.parse(localStorage.getItem('pokedex') || "[]");
-        setBookmarkedPokemons(bookmarkedPokemons);
       } catch (error) {
         setIsLoading(false);
         setIsError(true);
@@ -45,10 +44,6 @@ export const PokemonProvider = ({ children }) => {
 
     fetchData();
   }, []);
-
-  const isBookmarked = (pokemon) => {
-    return bookmarkedPokemons.filter(old_pokemon => old_pokemon.id === pokemon.id).length > 0;
-  }
 
   const searchPokemon = (event, name) => {
     event.preventDefault();
@@ -98,7 +93,7 @@ export const PokemonProvider = ({ children }) => {
       return setBookmarkedPokemons([...bookmarkedPokemons, pokemon]);
     }
 
-    const newbookmarkedPokemons = bookmarkedPokemons.filter(old_pokemon => old_pokemon.id != pokemon.id);
+    const newbookmarkedPokemons = bookmarkedPokemons.filter(old_pokemon => old_pokemon.id !== pokemon.id);
     localStorage.setItem('pokedex', JSON.stringify(newbookmarkedPokemons));
     setBookmarkedPokemons(newbookmarkedPokemons);
   }
