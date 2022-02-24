@@ -4,7 +4,6 @@ import { PokemonProvider } from './contexts/Pokemons';
 import Router from './routes';
 import { GlobalStyle } from './styles/GlobalStyles';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <PokemonProvider>

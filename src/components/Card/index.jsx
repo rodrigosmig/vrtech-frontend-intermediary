@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getPokemonColor } from "../../helpers/helpers";
@@ -36,7 +37,7 @@ const Image = styled.img`
   padding: 10px 15px;
 `;
 
-export function Card({ pokemon }) {
+const CardComponent = ({ pokemon }) => {
   return (
     <Container color={getPokemonColor(pokemon.types[0])}>
         <CardHeader 
@@ -49,3 +50,5 @@ export function Card({ pokemon }) {
     </Container>
   )
 }
+
+export const Card = memo(CardComponent)

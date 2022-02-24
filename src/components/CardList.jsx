@@ -18,8 +18,7 @@ const Content = styled.div`
 
   @media (max-width: 800px) {
     flex-direction: column;
-  }
-  
+  }  
 `;
 
 export function CardList() {
@@ -31,7 +30,7 @@ export function CardList() {
         {isLoading ? (
           <Loading />
         ) : (
-          filteredPokemons?.map(pokemon => (
+          filteredPokemons.map(pokemon => (
             <Card 
               key={pokemon.id} 
               pokemon={pokemon}

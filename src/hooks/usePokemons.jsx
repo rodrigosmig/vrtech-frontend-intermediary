@@ -5,16 +5,20 @@ export const usePokemons = () => {
   const {
     pokemons,
     filteredPokemons,
+    bookmarkedPokemons,
     isLoading,
     isError,
-    searchPokemon
+    searchPokemon,
+    toggle
   } = useContext(PokemonContext);
 
   return {
     pokemons,
     filteredPokemons,
+    bookmarkedPokemons,
     isLoading,
     isError,
-    searchPokemon
+    searchPokemon,
+    toggle
   }
 }
