@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { usePokemons } from "../../hooks/usePokemons";
@@ -46,24 +47,26 @@ export function CardHeader({ pokemon }) {
   const { toggle } = usePokemons();
 
   return (
-    <Container>
-      <ContentTitle>
-        <Link to={`/details/${pokemon.name}`}>
-          <Title>
-            { pokemon.name }
-          </Title>
-          <Subtitle>#{ String(pokemon.id).padStart(3, '0')}</Subtitle>
-        </Link>
-      </ContentTitle>
+    <BrowserRouter>
+      <Container>
+        <ContentTitle>
+          <Link to={`/details/${pokemon.name}`}>
+            <Title>
+              { pokemon.name }
+            </Title>
+            <Subtitle>#{ String(pokemon.id).padStart(3, '0')}</Subtitle>
+          </Link>
+        </ContentTitle>
 
-      <Bookmarks>
-        <ContentBookmark>
-            <BookmarkedHeart 
-              isActive={pokemon.is_bookmarked} 
-              onClick={() => toggle(pokemon)}
-            />
-        </ContentBookmark>
-      </Bookmarks>
-    </Container>
+        <Bookmarks>
+          <ContentBookmark>
+              <BookmarkedHeart 
+                isActive={pokemon.is_bookmarked} 
+                onClick={() => toggle(pokemon)}
+              />
+          </ContentBookmark>
+        </Bookmarks>
+      </Container>    
+    </BrowserRouter>
   )
 }
